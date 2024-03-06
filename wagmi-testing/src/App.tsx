@@ -2,7 +2,13 @@ import { useAccount, useConnect, useDisconnect, useSignTypedData } from 'wagmi'
 import { useState } from 'react'
 import { keyDerivation, sign, pedersen, ec as starkEc } from '@starkware-industries/starkware-crypto-utils'
 
+
+const time = new Date()
+
+
 function App() {
+
+
   const account = useAccount()
   const { connectors, connect, status, error } = useConnect()
   const { disconnect } = useDisconnect()
@@ -33,13 +39,18 @@ function App() {
           {
              "name":"tosAccepted",
              "type":"bool"
+          },
+          {
+             "name":"time",
+             "type":"string"
           }
        ]
     },
     "message":{
        "accountIndex":0,
        "wallet":"${account?.addresses?.at(0)}",
-       "tosAccepted":true
+       "tosAccepted":true,
+       "time":"${time.toISOString()}"
     }
  }
   `);
@@ -87,7 +98,8 @@ function App() {
       accountCreation: {
         accountIndex: 0,
         wallet: account?.addresses?.at(0),
-        tosAccepted: true
+        tosAccepted: true,
+        time: time.toISOString()
       }
     }
 
