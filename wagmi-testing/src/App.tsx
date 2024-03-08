@@ -39,10 +39,6 @@ function App() {
           {
              "name":"tosAccepted",
              "type":"bool"
-          },
-          {
-             "name":"time",
-             "type":"string"
           }
        ]
     },
@@ -50,7 +46,6 @@ function App() {
        "accountIndex":0,
        "wallet":"${account?.addresses?.at(0)}",
        "tosAccepted":true,
-       "time":"${time.toISOString()}"
     }
  }`);
 
@@ -150,7 +145,6 @@ function App() {
         accountIndex: 0,
         wallet: account?.addresses?.at(0),
         tosAccepted: true,
-        time: time.toISOString()
       }
     }
 
